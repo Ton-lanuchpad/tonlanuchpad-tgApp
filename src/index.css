@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #019aed;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0184ca;
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #019aed rgba(255, 255, 255, 0.04);
+}
+
+body {
+  font-family: 'Advent Pro', sans-serif;
+}
+
+.light-container {
+  position: relative;
+  width: 100%;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glow-shadow {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  bottom: 0;
+  background: radial-gradient(ellipse at center,
+      rgba(82, 180, 198, 0.6),
+      /* Blue glow similar to the image */
+      transparent);
+  filter: blur(12px);
+  /* Stronger blur for a glowing effect */
+}
+
+.light {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(82, 180, 198, 0.8), transparent);
+  /* Blue color theme */
+  opacity: 0;
+  filter: blur(6px);
+  /* Slight blur for soft glow */
+}
+
+.left-light {
+  left: 0;
+  animation: moveLeftToCenter 2s ease-in-out infinite;
+}
+
+.right-light {
+  right: 0;
+  animation: moveRightToCenter 2s ease-in-out infinite;
+}
+
+@keyframes moveLeftToCenter {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(50%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes moveRightToCenter {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
